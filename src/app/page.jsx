@@ -25,6 +25,7 @@ export default function Page() {
                 id="txtUsername"
                 className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
                 placeholder="Ingresa tu usuario"
+                required={true}
             />
           </div>
 
@@ -41,6 +42,7 @@ export default function Page() {
                 id="txtPassword"
                 className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
                 placeholder="Ingresa tu contraseña"
+                required={true}
             />
           </div>
 
