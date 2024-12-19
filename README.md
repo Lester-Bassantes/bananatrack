@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BananaTrack
 
-## Getting Started
+**BananaTrack** es una aplicación web diseñada para la gestión eficiente y el seguimiento de contenedores de banano. La aplicación permite a los usuarios gestionar los datos relacionados con los contenedores, hacer un seguimiento de su ubicación, estado y otros detalles clave. Está diseñada para ser intuitiva y fácil de usar, ayudando a optimizar el proceso logístico en la industria del banano.
 
-First, run the development server:
+## Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Gestión de contenedores**: Permite agregar, editar, eliminar y consultar contenedores de banano.
+- **Seguimiento en tiempo real**: Proporciona un sistema de seguimiento para conocer la ubicación y estado de los contenedores.
+- **Interfaz intuitiva**: Un diseño claro y fácil de usar, con una navegación fluida y accesible.
+- **Gestión de datos**: Capacidad para generar informes y análisis detallados sobre los contenedores.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologías Utilizadas
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Next.js**: Framework de React para el desarrollo de aplicaciones web escalables y optimizadas.
+- **TailwindCSS**: Framework de diseño CSS que facilita la creación de interfaces de usuario modernas y responsivas.
+- **Node.js**: Para el desarrollo del backend y la lógica de la aplicación.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Instalación
 
-## Learn More
+Sigue estos pasos para instalar y ejecutar el proyecto localmente:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clonar el repositorio**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    git clone https://github.com/tu_usuario/BananaTrack.git
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Instalar dependencias**:
 
-## Deploy on Vercel
+   Navega al directorio del proyecto e instala las dependencias con npm:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    cd BananaTrack
+    npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Ejecutar el proyecto**:
+
+   Para iniciar el servidor de desarrollo:
+
+    ```bash
+    npm run dev
+    ```
+
+   El proyecto estará disponible en `http://localhost:3000`.
+
+## Uso
+
+- Al ingresar, podrás ver una vista general de los contenedores.
+- Puedes agregar nuevos contenedores, editar la información de los existentes y seguir su ubicación y estado.
+- Los datos se almacenan de forma segura y están disponibles para generar informes de seguimiento.
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Si deseas mejorar el proyecto, puedes seguir estos pasos:
+
+1. Haz un fork de este repositorio.
+2. Crea una nueva rama para tus cambios (`git checkout -b nueva-funcionalidad`).
+3. Haz commit de tus cambios (`git commit -am 'Añadir nueva funcionalidad'`).
+4. Haz push a tu rama (`git push origin nueva-funcionalidad`).
+5. Abre un Pull Request.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Contacto
+
+Si tienes alguna pregunta o sugerencia, no dudes en contactarnos.
+
