@@ -1,3 +1,3 @@
 export default function Page() {
-    return <h1>Welcome to main dashboard</h1>
+    return <h1 className={"text-white"} >Welcome to main dashboard</h1>
 }

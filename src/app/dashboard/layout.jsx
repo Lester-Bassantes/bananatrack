@@ -7,7 +7,7 @@ export default function Layout({ children }) {
             <SideNav />
 
             {/* Main Content */}
-            <div className="flex-grow p-6 bg-gray-100 overflow-y-auto">
+            <div className="flex-grow p-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-y-auto">
                 {children}
             </div>
         </div>

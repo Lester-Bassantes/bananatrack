@@ -1,12 +1,43 @@
+'use client';
+
 import Image from "next/image";
+import { useActionState } from 'react';
+import Form from "next/form";
+import { login } from './checkLogin';
+import Swal from "sweetalert2";
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Page() {
+  const [message, formAction] = useActionState(login, null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (message === "Login exitoso") {
+      router.push('/dashboard'); // Redirige después del render
+    }
+  }, [message, router]); // Ejecuta cuando el mensaje cambie
+
+  if (message !== "Login exitoso") {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: message,
+      background: '#1a202c', // Fondo oscuro
+      color: '#ffffff',      // Texto blanco
+      confirmButtonColor: '#4a5568', // Botón oscuro
+      customClass: {
+        popup: 'dark-popup',
+      },
+    });
+  }
+
+
   return (
       <div className="flex items-center justify-center h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black ">
-        <form
+        <Form
             className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-700 animate__animated animate__fadeInDown"
-            action=""
-            method="post"
+            action={formAction}
         >
           <div className="flex justify-center items-center mb-6">
             <Image src={"/images/Grupo-Palmar-Logotipo.png"} alt={"Logo"} height={150} width={250}/>
@@ -59,7 +90,7 @@ export default function Page() {
               Regístrate aquí
             </a>
           </p>
-        </form>
+        </Form>
       </div>
   );
 }
