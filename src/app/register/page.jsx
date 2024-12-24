@@ -4,31 +4,14 @@ import { useActionState } from 'react';
 import Image from "next/image";
 import Form from "next/form";
 import { createNewUser } from "./storeNewUser";
-import Swal from "sweetalert2";
 
 export default function Page() {
-    const [message, formAction] = useActionState(createNewUser, null);
-
-    if (message === "No se puedo ingresar el usuario") {
-        Swal.fire({
-            title: "Error",
-            text: "No se pudo crear el usuario",
-            icon: "error"
-        });
-    }
-
-    if (message === "Usuario creado correctamente") {
-        Swal.fire({
-            title: "Correcto",
-            text: "Usuario creado correctamente",
-            icon: "success"
-        });
-    }
+    const [state, action, pending] = useActionState(createNewUser, undefined);
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black">
             <Form
-                action={formAction}
+                action={action}
                 className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-700 animate__animated animate__fadeInDown"
             >
                 <div className="flex justify-center items-center mb-6">
@@ -53,6 +36,11 @@ export default function Page() {
                         placeholder="Nombre"
                         className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
                     />
+                    {state?.errors?.txtFirstName && (
+                        <p className="mt-2 text-sm text-red-500 font-medium animate__animated animate__fadeIn">
+                            {state.errors.txtFirstName}
+                        </p>
+                    )}
                 </div>
 
                 <div className="mb-4">
@@ -68,6 +56,11 @@ export default function Page() {
                         placeholder="Apellido"
                         className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
                     />
+                    {state?.errors?.txtSecondName && (
+                        <p className="mt-2 text-sm text-red-500 font-medium animate__animated animate__fadeIn">
+                            {state.errors.txtSecondName}
+                        </p>
+                    )}
                 </div>
 
                 <div className="mb-4">
@@ -83,6 +76,11 @@ export default function Page() {
                         placeholder="Usuario"
                         className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
                     />
+                    {state?.errors?.txtUsername && (
+                        <p className="mt-2 text-sm text-red-500 font-medium animate__animated animate__fadeIn">
+                            {state.errors.txtUsername}
+                        </p>
+                    )}
                 </div>
 
                 <div className="mb-4">
@@ -96,6 +94,11 @@ export default function Page() {
                         required
                         className="w-full px-4 py-2 text-gray-400 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
+                    {state?.errors?.dateBirthday && (
+                        <p className="mt-2 text-sm text-red-500 font-medium animate__animated animate__fadeIn">
+                            {state.errors.dateBirthday}
+                        </p>
+                    )}
                 </div>
 
                 <div className="mb-4">
@@ -110,6 +113,20 @@ export default function Page() {
                         placeholder="Contraseña"
                         className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
                     />
+                    {state?.errors?.txtPassword && (
+                        <div>
+                            <p className="mt-2 text-sm text-red-500 font-medium animate__animated animate__fadeIn">
+                                La contraseña debe cumplir con:
+                            </p>
+                            <ul className="mt-2 ml-4 list-disc text-sm text-red-400 space-y-1">
+                                {state.errors.txtPassword.map((error) => (
+                                    <li key={error} className="leading-5">
+                                        {error}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
 
                 <div className="mb-6">
@@ -124,11 +141,17 @@ export default function Page() {
                         placeholder="Confirmar contraseña"
                         className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
                     />
+                    {state?.errors?.txtPasswordConfirm && (
+                        <p className="mt-2 text-sm text-red-500 font-medium animate__animated animate__fadeIn">
+                            {state.errors.txtPasswordConfirm}
+                        </p>
+                    )}
                 </div>
 
                 <button
                     type="submit"
                     className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-300"
+                    disabled={pending}
                 >
                     Crear cuenta
                 </button>

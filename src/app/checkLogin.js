@@ -18,6 +18,6 @@ export async function login(state, formData) {
         return {message: "Contraseña incorrecta"};
     }
 
-    return {message: "Login exitoso"};
+    return {message: "Login"};
 
 }

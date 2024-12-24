@@ -1,9 +1,9 @@
 'use server';
 
-import { createUser } from '../controllers/userController';
-import { SignupFormSchema } from '../lib/registerDefinitions';
+import {createUser} from '../controllers/userController';
+import {SignupFormSchema} from '../lib/registerDefinitions';
 
-export async function createNewUser(prevState, formData) {
+export async function createNewUser(state, formData) {
     const validatedFields = SignupFormSchema.safeParse({
         txtFirstName: formData.get('txtFirstName'),
         txtSecondName: formData.get('txtSecondName'),
@@ -14,10 +14,9 @@ export async function createNewUser(prevState, formData) {
     });
 
     if (!validatedFields.success) {
-        /* return {
+        return {
             errors: validatedFields.error.flatten().fieldErrors,
-        } */
-        return "No se pudo ingresar el usuario"
+        }
     }
 
     const user = {
@@ -28,6 +27,5 @@ export async function createNewUser(prevState, formData) {
         user_password: formData.get('txtPassword'),
     }
 
-    await  createUser(user);
-    return "Usuario creado correctamente";
+    return await createUser(user);
 }
