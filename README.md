@@ -22,7 +22,7 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
 1. **Clonar el repositorio**:
 
     ```bash
-    git clone https://github.com/tu_usuario/BananaTrack.git
+    git clone https://github.com/Lester-Bassantes/BananaTrack.git
     ```
 
 2. **Instalar dependencias**:

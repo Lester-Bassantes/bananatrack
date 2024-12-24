@@ -1,43 +1,18 @@
 'use client';
 
 import Image from "next/image";
-import { useActionState } from 'react';
 import Form from "next/form";
 import { login } from './checkLogin';
-import Swal from "sweetalert2";
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import {useActionState} from "react";
 
 export default function Page() {
-  const [message, formAction] = useActionState(login, null);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (message === "Login exitoso") {
-      router.push('/dashboard'); // Redirige después del render
-    }
-  }, [message, router]); // Ejecuta cuando el mensaje cambie
-
-  if (message !== "Login exitoso") {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: message,
-      background: '#1a202c', // Fondo oscuro
-      color: '#ffffff',      // Texto blanco
-      confirmButtonColor: '#4a5568', // Botón oscuro
-      customClass: {
-        popup: 'dark-popup',
-      },
-    });
-  }
-
+  const [state, action, pending] = useActionState(login, undefined);
 
   return (
       <div className="flex items-center justify-center h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black ">
         <Form
             className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-700 animate__animated animate__fadeInDown"
-            action={formAction}
+            action={action}
         >
           <div className="flex justify-center items-center mb-6">
             <Image src={"/images/Grupo-Palmar-Logotipo.png"} alt={"Logo"} height={150} width={250}/>
@@ -59,7 +34,6 @@ export default function Page() {
                 required={true}
             />
           </div>
-
           <div className="mb-6">
             <label
                 htmlFor="txtPassword"
@@ -75,11 +49,17 @@ export default function Page() {
                 placeholder="Ingresa tu contraseña"
                 required={true}
             />
+            {state?.message && (
+                <p className="mt-2 text-sm text-red-500 font-medium animate__animated animate__fadeIn">
+                  {state.message}
+                </p>
+            )}
           </div>
 
           <button
               type="submit"
               className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-300"
+              disabled={pending}
           >
             Ingresar
           </button>
