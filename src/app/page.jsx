@@ -4,16 +4,9 @@ import Image from "next/image";
 import Form from "next/form";
 import { login } from './checkLogin';
 import {useActionState} from "react";
-import { useRouter} from "next/navigation";
 
 export default function Page() {
   const [state, action, pending] = useActionState(login, undefined);
-
-  const router = useRouter();
-
-  if (state?.message === "Login") {
-    router.push('/dashboard');
-  }
 
   return (
       <div className="flex items-center justify-center h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black ">

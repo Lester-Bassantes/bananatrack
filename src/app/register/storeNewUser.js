@@ -2,6 +2,7 @@
 
 import {createUser} from '../controllers/userController';
 import {SignupFormSchema} from '../lib/registerDefinitions';
+import {redirect} from "next/navigation";
 
 export async function createNewUser(state, formData) {
     const validatedFields = SignupFormSchema.safeParse({
@@ -26,6 +27,7 @@ export async function createNewUser(state, formData) {
         user_birthday: formData.get('dateBirthday'),
         user_password: formData.get('txtPassword'),
     }
-
-    return await createUser(user);
+    await createUser(user);
+    redirect('/');
+    return "success";
 }

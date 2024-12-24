@@ -155,6 +155,12 @@ export default function Page() {
                 >
                     Crear cuenta
                 </button>
+                <p className="mt-4 text-sm text-center text-gray-400">
+                    ¿Ya tienes cuenta?{" "}
+                    <a href="/" className="text-purple-500 hover:underline">
+                        Ingresa aquí
+                    </a>
+                </p>
             </Form>
         </div>
     );

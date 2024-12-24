@@ -2,6 +2,7 @@
 
 import bcrypt from 'bcrypt';
 import { searchUserByUsername } from './controllers/userController';
+import {redirect} from "next/navigation";
 
 export async function login(state, formData) {
     const username = formData.get('txtUsername');
@@ -18,6 +19,7 @@ export async function login(state, formData) {
         return {message: "Contraseña incorrecta"};
     }
 
+    redirect('/dashboard');
     return {message: "Login"};
 
 }
