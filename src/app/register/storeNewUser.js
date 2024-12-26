@@ -27,7 +27,7 @@ export async function createNewUser(state, formData) {
         user_birthday: formData.get('dateBirthday'),
         user_password: formData.get('txtPassword'),
     }
-    await createUser(user);
+    const {success} = await createUser(user);
     redirect('/');
-    return "success";
+    return success;
 }

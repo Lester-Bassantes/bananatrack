@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Form from "next/form";
 import { login } from './checkLogin';
-import {useActionState} from "react";
+import { useActionState } from "react";
 
 export default function Page() {
   const [state, action, pending] = useActionState(login, undefined);
@@ -58,10 +58,40 @@ export default function Page() {
 
           <button
               type="submit"
-              className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-300"
+              className={`w-full py-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-300 ${
+                  pending
+                      ? "bg-purple-400 text-gray-300 cursor-not-allowed"
+                      : "bg-purple-600 text-white hover:bg-purple-700"
+              }`}
               disabled={pending}
           >
-            Ingresar
+            {pending ? (
+                <div className="flex items-center justify-center">
+                  <svg
+                      className="animate-spin h-5 w-5 mr-2 text-gray-300"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                  >
+                    <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                    ></circle>
+                    <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8h8a8 8 0 01-8 8z"
+                    ></path>
+                  </svg>
+                  Cargando...
+                </div>
+            ) : (
+                "Ingresar"
+            )}
           </button>
 
           <p className="mt-4 text-sm text-center text-gray-400">
