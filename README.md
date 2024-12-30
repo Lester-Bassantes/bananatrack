@@ -44,12 +44,6 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
 
    El proyecto estará disponible en `http://localhost:3000`.
 
-## Uso
-
-- Al ingresar, podrás ver una vista general de los contenedores.
-- Puedes agregar nuevos contenedores, editar la información de los existentes y seguir su ubicación y estado.
-- Los datos se almacenan de forma segura y están disponibles para generar informes de seguimiento.
-
 ## Contribuciones
 
 ¡Las contribuciones son bienvenidas! Si deseas mejorar el proyecto, puedes seguir estos pasos:
